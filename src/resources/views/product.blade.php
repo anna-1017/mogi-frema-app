@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品一覧画面（トップ）
-    </title>
+@extends('layouts.header-nav')
 
-    <link rel="stylesheet" href="mogi.product.css">
+    @section('title')
+    <title>商品一覧画面（トップ）</title>
+    @endsection
 
-</head>
-<body>
+    @section('css')
+    <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+    @endsection
+
+    @section('content')
     <main class="toppage">
         <div class="toppage__inner">
             <header class="toppage__header">
@@ -47,6 +46,4 @@
             
         </div>
     </main>
-    
-</body>
-</html>
+    @endsection
