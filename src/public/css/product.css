@@ -76,6 +76,15 @@ body {
 
 .recommend {
     color: red;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.mylist {
+    color: rgb(98, 97, 97);
+    font-weight: bold;
+    text-decoration: none;
+
 }
 
 .product-list {
@@ -110,5 +119,3 @@ body {
     font-weight: bold;
     font-size: 14px
 }
-
-@media()

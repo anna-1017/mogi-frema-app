@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品一覧画面（トップ）
-    </title>
+    <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="mogi.product.css">
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/header-nav.css') }}">
+    @yield('css')
 
 </head>
 <body>
@@ -28,25 +29,11 @@
                 </div>
             </header>
 
-            <div class="heading">
-                <a class="recommend" href="/">おすすめ</a>
-                <a class="mylist" href="/?tab=mylist">マイリスト</a>
-            </div>                
-            <hr>
-            <div class="product-list">
-                @foreach ($products as $product)
-                <div class="product-item">
-                    <div class="product-img">
-                        <img class="product-image" src="{{ $product->image_url }}" alt="produc{{ $product->name }}">
-                    </div>
-                    <div class="product-name">{{ $product->name }}</div>
-                </div>
-                @endforeach
+            <div>
+                @yield('content')
             </div>
-            
-            
         </div>
     </main>
-    
 </body>
+    
 </html>
