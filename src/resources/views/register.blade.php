@@ -6,9 +6,10 @@
     
     @section('css')
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header-no-nav.css') }}">
     @endsection
 
-            @section('content')
+        @section('content')
             <div class="register">
                 <div class="register__inner">
                     <h2 class="register-header">会員登録</h2>
@@ -39,7 +40,7 @@
                         @enderror
 
                         <label class="label">確認用パスワード</label>
-                        <input class="form-input" type="password" />
+                        <input class="form-input" type="password" name="password_confirmation"/>
                         @error('password')
                         <span class="input_error">
                             <p class="input_error_message">{{ $errors->first('password') }}</p>
@@ -55,5 +56,5 @@
                     </form>
                 </div>
             </div>
-            @section('content')
+        @endsection
     
