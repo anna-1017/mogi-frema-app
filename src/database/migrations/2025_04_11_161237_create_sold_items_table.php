@@ -15,6 +15,12 @@ class CreateSoldItemsTable extends Migration
     {
         Schema::create('sold_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
+            $table->string('sending_address');
+            $table->string('sending_postcode');
+            $table->string('sending_building')->nullable();
+            $table->enum('payment_method', ['convenience_store', 'credit_card' ]);
             $table->timestamps();
         });
     }

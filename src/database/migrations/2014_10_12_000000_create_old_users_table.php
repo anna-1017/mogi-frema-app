@@ -31,6 +31,6 @@ class CreateOldUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('old_users');
     }
 }
