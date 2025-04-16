@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Redirect;
+use Laravel\Fortify\Contracts\RegisterResponse;
+use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Contracts\LoginResponse;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -29,7 +34,6 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
-        Fortify::createUsersUsing(CreateNewUser::class);
         
         Fortify::registerview(function(){
             return view('auth.register');
@@ -42,9 +46,33 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('login', function(Request $request){
             $email = (string) $request->email;
 
-            return Limit::perMinute(10)->by($email . $request->ip());
+            return Limit::perMinute(100)->by($email . $request->ip());
         });
 
-        $this->app->bind(FortifyLoginRequest::class, LoginRequest::class);			
+        Fortify::redirects([
+            'login' => '/',
+        ]);
+
+        $this->app->bind(FortifyLoginRequest::class, LoginRequest::class);	
+        
+        $this->app->instance(
+            RegisterResponse::class,
+            new class implements RegisterResponse{
+                public function toResponse($request)
+                {
+                    return redirect('/mypage/profile');
+                }
+            }
+        );
+
+        $this->app->instance(
+            LoginResponse::class,
+            new class implements LoginResponse{
+                public function toResponse($request)
+                {
+                    return redirect('/')
+                }
+            }
+        )
     }
 }

@@ -56,26 +56,25 @@ body {
     margin-bottom: 5px;
 }
 
-.form-input:last-of-type {
-    margin-bottom: 40px;
-}
 
 
 .form-button {
-    width: 100%;
-    height: 40px;
+    width: 90%;
+    height: 35px;
     border-radius: 3px;
-    border: none;
     background: #FF5555;
+    border: none;
     color: white;
+    font-size: 14px;
     font-weight: bold;
-
+    margin-top: 50px;
+    margin-bottom: 30px;
+    cursor: pointer;
 }
 
 .login-notion {
     width: fit-content;
     margin: 0 auto;
-    margin-top: 20px;
     margin-bottom: 30px;
     text-decoration: none;
     font-size: 14px;
@@ -95,3 +94,15 @@ body {
         height: 35px;
     }
 }
+
+.input_error {
+    margin-bottom: 20px;
+
+}
+
+.input_error_message {
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}
+

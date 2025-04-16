@@ -16,15 +16,27 @@
             <header class="toppage__header">
                 <div class="header__inner">
                     <div class="header-logo">
-                        <img src="logo.svg" alt="logo" class="logo">
+                        <img src="{{ asset('images/logo.svg') }}" alt="logo" class="logo">
                     </div>
                     <input class="product-search" type="text" placeholder="　　なにをお探しですか？">
                     <nav class="header__nav">
-                        <a href="" class="login">ログイン</a>
-                        <a href="" class="mypage">マイページ</a>
-                        <a href="" class="sell">出品</a>
-                        
+                        @auth
+                          <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit">ログアウト</button>
+                          </form>
+                        <a href="/mypage/profile" class="mypage">マイページ</a>
+                        <a href="/sell" class="sell">出品</a>
+                        @endauth
 
+                        @guest
+                          <form action="{{ route('login') }}" method="GET">
+                            @csrf
+                            <button class="login" type="submit">ログイン</button>
+                          </form>
+                        <a href="/mypage/profile" class="mypage">マイページ</a>
+                        <a href="/sell" class="sell">出品</a>
+                        @endguest
                     </nav>
                 </div>
             </header>

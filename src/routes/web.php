@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ItemController;
+use Laravel\Fortify\Fortify;
 
 
 /*
@@ -15,7 +17,19 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('/', [ItemController::class, 'index']);
 Route::get('/register', function(){
     return view('register');
 });
 Route::post('/register', [UserController::class, 'register']);
+
+Route::get('login', [UserController::class, 'showLogin'])->name('login');
+
+
+Route::middleware('auth')->group(function(){
+    Route::get('/mypage/profile', function(){
+    return view('edit_profile');
+    });
+    
+    
+});

@@ -18,7 +18,7 @@
                         <input class="form-input" type="email" name="email" value="{{ old('email') }}" />
                         @error('email')
                         <span class="input_error">
-                            <p class="input_error_message">{{ $errors->first('email') }}</p>
+                            <p class="input_error_message">{{ $message }}</p>
                         </span>
                         @enderror
 
@@ -26,7 +26,7 @@
                         <input class="form-input" type="password" name="password" />
                         @error('password')
                         <span class="input_error">
-                            <p class="input_error_message">{{ $errors->first('password') }}</p>
+                            <p class="input_error_message">{{ $message }}</p>
                         </span>
                         @enderror
                         
@@ -39,6 +39,7 @@
                     </form>
                 </div>
             </div>
+            @endsection
 
             
             
