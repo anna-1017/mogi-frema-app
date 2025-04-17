@@ -15,12 +15,12 @@
             </div>                
             <hr>
             <div class="product-list">
-                @foreach ($products as $product)
+                @foreach ($items as $item)
                 <div class="product-item">
                     <div class="product-img">
-                        <img class="product-image" src="{{ $product->image_url }}" alt="produc{{ $product->name }}">
+                        <img class="product-image" src="{{ $item->img_url }}" alt="produc{{ $item->name }}">
                     </div>
-                    <div class="product-name">{{ $product->name }}</div>
+                    <div class="product-name">{{ $item->name }}</div>
                 </div>
                 @endforeach
             </div>
