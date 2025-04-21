@@ -18,7 +18,12 @@
                     <div class="header-logo">
                         <img src="{{ asset('images/logo.svg') }}" alt="logo" class="logo">
                     </div>
-                    <input class="product-search" type="text" placeholder="　　なにをお探しですか？">
+
+                    <!--検索フォームを完成させるところから！ -->
+                    <form action="" class="product-search-form">
+                      <input class="product-search" type="text" name="query" value="{{ request('query') }}" placeholder="　　なにをお探しですか？">
+                    </form>
+
                     <nav class="header__nav">
                         @auth
                           <form action="{{ route('logout') }}" method="POST">
@@ -32,9 +37,9 @@
                         @guest
                           <form action="{{ route('login') }}" method="GET">
                             @csrf
-                            <button class="login" type="submit">ログイン</button>
+                            <a href="{{ route('login') }}" class="login">ログイン</a>
                           </form>
-                        <a href="/mypage/profile" class="mypage">マイページ</a>
+                        <a href="/mypage/profile">マイページ</a>
                         <a href="/sell" class="sell">出品</a>
                         @endguest
                     </nav>

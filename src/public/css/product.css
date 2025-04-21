@@ -94,6 +94,10 @@ body {
     padding: 20px;
 }
 
+.product-card {
+    text-decoration: none;
+}
+
 .product-item {
     margin-top: 60px;
     border-radius: 3px;
@@ -116,5 +120,6 @@ body {
 
 .product-name {
     font-weight: bold;
-    font-size: 14px
+    font-size: 14px;
+    color: black;
 }

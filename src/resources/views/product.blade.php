@@ -16,12 +16,14 @@
             <hr>
             <div class="product-list">
                 @foreach ($items as $item)
-                <div class="product-item">
+                <a href="/item/{{ $item->id }}" class="product-card">
+                  <div class="product-item">
                     <div class="product-img">
                         <img class="product-image" src="{{ $item->img_url }}" alt="produc{{ $item->name }}">
                     </div>
                     <div class="product-name">{{ $item->name }}</div>
-                </div>
+                  </div>
+                </a>
                 @endforeach
             </div>
     @endsection

@@ -23,13 +23,16 @@ Route::get('/register', function(){
 });
 Route::post('/register', [UserController::class, 'register']);
 
-Route::get('login', [UserController::class, 'showLogin'])->name('login');
+Route::get('/login', [UserController::class, 'showLogin'])->name('login');
+
+Route::get('/item/{item}', [ItemController::class, 'getDetail']);
 
 
 Route::middleware('auth')->group(function(){
     Route::get('/mypage/profile', function(){
     return view('edit_profile');
     });
+    Route::post('/purchase/{item}', [ItemController::class, 'purchase']);
     
     
 });
