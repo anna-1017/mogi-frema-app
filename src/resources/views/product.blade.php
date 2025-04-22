@@ -14,7 +14,7 @@
                 <a class="mylist" href="/?tab=mylist">マイリスト</a>
             </div>                
             <hr>
-            <div class="product-list">
+            <div class="product-list {{ request('query') ? 'search-mode' : '' }}">
                 @foreach ($items as $item)
                 <a href="/item/{{ $item->id }}" class="product-card">
                   <div class="product-item">
@@ -25,5 +25,6 @@
                   </div>
                 </a>
                 @endforeach
+              
             </div>
     @endsection

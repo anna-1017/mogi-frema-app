@@ -35,4 +35,12 @@ class Item extends Model
     {
         return $this->hasOne(SoldItem::class);
     }
+
+    public function scopeSearch($query, $keyword)
+    {
+        if(!empty($keyword)){
+            $query->where('name', 'like', "%{$keyword}%" );
+        }
+        return $query;
+    }
 }

@@ -68,8 +68,8 @@
                         </p>
                       </div>
                   </div>
-{{-- コメント表示（あとで復活） --}}
-{{--                   <div class="comment-section">
+<!--コメント送信フォーム -->
+                   <div class="comment-section">
                     <p class="comment-title">コメント（{{ $item->comments->count()}}）</p>
                     @foreach ($item->comments as $comment)
                         <div class="comment">
@@ -90,7 +90,7 @@
                       <textarea name="comment" id=""></textarea>
                       <button type="submit">コメントを送信する</button>
                     </form>
-                  </div>--}}
+                  </div>
 
                 </div>
                 

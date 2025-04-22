@@ -19,8 +19,7 @@
                         <img src="{{ asset('images/logo.svg') }}" alt="logo" class="logo">
                     </div>
 
-                    <!--検索フォームを完成させるところから！ -->
-                    <form action="" class="product-search-form">
+                    <form action="/" method ="GET" class="product-search-form">
                       <input class="product-search" type="text" name="query" value="{{ request('query') }}" placeholder="　　なにをお探しですか？">
                     </form>
 

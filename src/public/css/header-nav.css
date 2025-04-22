@@ -33,9 +33,11 @@ body {
 
 }
 
-.product-search {
-    display: flex;
+.product-search-form {
     margin: 0 auto;
+}
+
+.product-search{
     width: 300px;
     height: 35px;
     border-radius: 5px;
