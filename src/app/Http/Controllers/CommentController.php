@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -15,7 +16,7 @@ class CommentController extends Controller
         Comment::create([
             'user_id' => auth()->id(),
             'item_id'=>$item_id,
-            'content'=>$request->comment,
+            'comment'=>$request->comment,
         ]);
 
         return back()->with('success', 'コメントを投稿しました');

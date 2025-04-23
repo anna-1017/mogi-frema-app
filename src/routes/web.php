@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CommentController;
 use Laravel\Fortify\Fortify;
 
 
@@ -34,5 +35,12 @@ Route::middleware('auth')->group(function(){
     Route::post('/purchase/{item}', [ItemController::class, 'purchase']);
     
     Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
+
+    Route::post('/item/{item_id}/like', [ItemController::class, 'toggleLike'])->name('item.toggle_like');
+    // /item/ はパスのベース（＝商品関連）
+    // {item_id} は「この商品のIDだよ〜」ってLaravelに教えてる。/like は「このURLで、いいね処理したいよ〜」って意味！
+    
+
+
     
 });

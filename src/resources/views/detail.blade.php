@@ -25,9 +25,15 @@
                   
                   <div class="icon-group">
                       <div class="icon-count">
-                          <img src="/images/star_icon.png" class="star-icon">
-                          <span>{{ $item->likes_count ?? 0 }}</span>
+                        <form action="{{ route('item.toggle_like', ['item_id' => $item->id]) }}" method="POST" class="icon-form">
+                          @csrf
+                          <button type="submit" class="icon-button">
+                            <img src="/images/star_icon.png" class="star-icon" alt="いいね">
+                            <span>{{ $item->likes_count ?? 0 }}</span>
+                          </button>
+                        </form>
                       </div>
+
                       <div class="icon-count">
                           <img src="/images/bubble_icon.png" class="bubble-icon">
                           <span>{{ $item->comments_count ?? 0 }}</span>
@@ -78,7 +84,7 @@
                             <span class="user-name">{{ $comment->user->name }}</span>
                           </div>
                           
-                          <p class="comment-text">{{ $comment->content }}</p>
+                          <p class="comment-text">{{ $comment->comment }}</p>
                         </div>
                     @endforeach
                   </div>

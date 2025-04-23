@@ -59,9 +59,37 @@
     font-size: 12px;
 }
 
+.icon-form{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.icon-button{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    margin-top: -0.5px;
+}
+
+.icon-button span{
+    margin-top: 2px;
+    line-height: 1;
+    color: #333;
+    display: block;
+}
+
 .star-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+    margin-bottom: 2px;
 }
 
 
@@ -172,9 +200,12 @@
 
 .comment-text {
     width: 95%;
-    height: auto;
-    background: #D9D9D9;
+    min-height: 50px;
+    border: solid 2px #D9D9D9;
+    border-radius: 3px;
     margin-bottom: 30px;
+    padding: 5px;
+    font-size: 14px;
 }
 
 .comment-for-item {
@@ -186,7 +217,8 @@
 textarea {
     width: 95%;
     height: 30px;
-    border: solid 2px #D9D9D9;
+    border: solid 3px #D9D9D9;
+    border-radius: 3px;
 }
 
 button {
@@ -203,8 +235,8 @@ button {
     margin-bottom: 50px;
 }
 
-@media (max-width: 768px){
-    .product-img{
+@media (max-width: 768px) {
+    .product-img {
         width: 100%;
         margin: 10px auto;
     }
