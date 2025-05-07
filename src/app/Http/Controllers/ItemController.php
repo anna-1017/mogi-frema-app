@@ -4,22 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Like;
 
 class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        $query = $request->input('query'); 
+        $tab = $request->input('tab', 'products');
 
-        if(!empty($query)){
-            $items = Item::search($query)->get();
-        } else {
-            $items = Item::all();
+        if($tab === 'mylist'){// ログイン中のユーザーが「いいね」した商品を取得
+            $items = auth()->user()->likes()->with('item')->get()->pluck('item');
+        }else{
+            $items = Item::all();// おすすめ商品の一覧を取得
         }
 
-        return view('product', compact('items'));
+        return view('product', [
+            'items' => $items,
+            'tab' => $tab,
+        ]);
 
     }
+
+
 
     public function getDetail(Item $item)
     {

@@ -26,6 +26,11 @@ class Item extends Model
         return $this->hasMany(Like::class);
     }
 
+    public function likedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

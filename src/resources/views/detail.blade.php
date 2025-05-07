@@ -68,7 +68,7 @@
                             目立った傷や汚れなし
                           @elseif($item->condition === 'some_damage')
                             やや傷や汚れあり
-                          @else($item->condition === 'bad')
+                          @else
                             状態が悪い
                           @endif
                         </p>

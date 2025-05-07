@@ -18,7 +18,7 @@ use Laravel\Fortify\Fortify;
 |
 */
 
-Route::get('/', [ItemController::class, 'index']);
+Route::get('/', [ItemController::class, 'index'])->name('products.index');
 Route::get('/register', function(){
     return view('register');
 });
@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function(){
     // /item/ はパスのベース（＝商品関連）
     // {item_id} は「この商品のIDだよ〜」ってLaravelに教えてる。/like は「このURLで、いいね処理したいよ〜」って意味！
     
-
+    
 
     
 });

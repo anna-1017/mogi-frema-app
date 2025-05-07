@@ -10,10 +10,15 @@
 
     @section('content')
             <div class="heading">
-                <a class="recommend" href="/">おすすめ</a>
-                <a class="mylist" href="/?tab=mylist">マイリスト</a>
+                <a class="recommend @if($tab === 'products') active @endif" href="{{ route('products.index', ['tab' => 'products']) }}">おすすめ</a>
+                
+                <a class="mylist @if($tab === 'mylist') active @endif" href="{{ route('products.index', ['tab' => 'mylist']) }}">マイリスト</a>
             </div>                
             <hr>
+            
+                
+
+              <!-- 商品リストの表示 -->
             <div class="product-list {{ request('query') ? 'search-mode' : '' }}">
                 @foreach ($items as $item)
                 <a href="/item/{{ $item->id }}" class="product-card">

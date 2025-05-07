@@ -96,7 +96,7 @@ body {
 
 .product-card {
     text-decoration: none;
-    
+
 }
 
 .product-item {
@@ -126,17 +126,17 @@ body {
     color: black;
 }
 
-.product-list.search-mode .product-img{
+.product-list.search-mode .product-img {
     height: 200px;
     overflow: hidden;
 }
 
-.product-list.search-mode .product-image{
+.product-list.search-mode .product-image {
     height: 200px;
     width: auto;
     object-fit: contain;
 }
 
-.product-list.search-mode .product-card{
+.product-list.search-mode .product-card {
     width: 200px;
 }
