@@ -18,7 +18,7 @@ use Laravel\Fortify\Fortify;
 |
 */
 
-Route::get('/', [ItemController::class, 'index'])->name('products.index');
+Route::get('/', [ItemController::class, 'index'])->name('products.index ');
 Route::get('/register', function(){
     return view('register');
 });

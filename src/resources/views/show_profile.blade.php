@@ -1,0 +1,63 @@
+@extends('layouts.header-nav')
+
+@section('title')
+プロフィール画面
+@endsection
+
+    @section('css')
+    <link rel="stylesheet" href="{{ asset('css/show_profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header-nav.css') }}">
+    @endsection
+
+    @section('content')
+
+
+<div class="profile">
+            <div class="profile__inner">
+                <div class="profile-img-wrapper">
+                    <div class="profile-img">
+                        <div class="image">
+                            <img src="" alt="user-icon">
+                        </div>
+                    </div>
+                    <p class="user-name">ユーザー名</p>
+
+                    <a href="/mypage/profile" class="edit-profile">プロフィールを編集</a>
+                </div>
+
+                
+
+                <div class="buy-sell-items">
+                  <a class="sell-items" href="/mypage?tab=sell">出品した商品</a>
+                  <a class="buy-items" href="/mypage?tab=buy">購入した商品</a>   
+                  <hr>
+                </div>   
+                           
+             
+
+              <div class="product-list">
+                @foreach ($products as $product)
+                <div class="product-item">
+                    <div class="product-img">
+                        <img class="product-image" src="{{ $product->image_url }}" alt="produc{{ $product->name }}">
+                    </div>
+                    <div class="product-name">{{ $product->name }}</div>
+                </div>
+                @endforeach
+              </div>
+
+
+              
+
+            </div>
+            
+        </div>
+          
+            
+            
+            
+        </div>
+    </main>
+    
+</body>
+</html>

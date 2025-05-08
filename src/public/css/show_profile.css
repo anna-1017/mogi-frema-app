@@ -1,0 +1,155 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.toppage {
+    max-width: 1540px;
+    height: 100vh;
+}
+
+.toppage__header {
+    width: 100%;
+    height: 60px;
+}
+
+.header__inner {
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+
+}
+
+.product-search {
+    display: flex;
+    margin: 0 auto;
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.header__nav {
+    display: flex;
+    margin-left: auto;
+    margin-right: 15px;
+    gap: 20px;
+}
+
+.header__nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.header__nav .sell {
+    background-color: white;
+    color: black;
+    padding: 3px 15px;
+    border-radius: 2px;
+    align-items: center;
+}
+
+.profile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+
+}
+
+.profile__inner {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+
+}
+
+.profile-img {
+    /*単なる丸い背景エリア（アイコンが読み込まれないときのスペース＆背景色） */
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: lightgray;
+}
+
+.image {
+    /*画像を丸くトリミングするためのマスク（覆い）。overflow: hidden で画像のハミ出しを防いでる。 */
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.image img {
+    /*画像自体に**「枠内にうまく収まってね！」っていう指示**。 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*枠に合わせて画像を**中央を基準にズームして切り取る（トリミング）**という指定 */
+    display: block;
+}
+
+
+.user-name {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+.edit-profile {
+    text-decoration: none;
+    margin-left: 250px;
+    border-radius: 5px;
+    border: 2px solid #FF5555;
+    color: #FF5555;
+    padding: 3px 10px;
+}
+
+.buy-sell-items {
+    width: 100%;
+
+}
+
+.sell-items {
+    margin-left: 100px;
+    color: #FF0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.buy-items {
+    margin-left: 100px;
+    color: #5F5F5F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+hr {
+    margin-top: 5px;
+}
+
+.product-list {
+    width: 90%;
+}
