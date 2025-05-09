@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use Laravel\Fortify\Fortify;
 
 
@@ -18,7 +19,7 @@ use Laravel\Fortify\Fortify;
 |
 */
 
-Route::get('/', [ItemController::class, 'index'])->name('products.index ');
+Route::get('/', [ItemController::class, 'index'])->name('products.index');
 Route::get('/register', function(){
     return view('register');
 });
@@ -29,9 +30,8 @@ Route::get('/login', [UserController::class, 'showLogin'])->name('login');
 Route::get('/item/{item}', [ItemController::class, 'getDetail']);
 
 Route::middleware('auth')->group(function(){
-    Route::get('/mypage/profile', function(){
-    return view('edit_profile');
-    });
+    Route::get('/mypage', [ProfileController::class, 'show'])->name('profile.show');
+    
     Route::post('/purchase/{item}', [ItemController::class, 'purchase']);
     
     Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function(){
     // /item/ はパスのベース（＝商品関連）
     // {item_id} は「この商品のIDだよ〜」ってLaravelに教えてる。/like は「このURLで、いいね処理したいよ〜」って意味！
     
+    Route::get('/mypage/profile', [ProfileController::class, 'editProfile'])->name('profile.edit');
+    Route::post('/mypage/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
     
 
     

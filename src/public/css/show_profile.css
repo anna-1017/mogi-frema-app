@@ -153,3 +153,31 @@ hr {
 .product-list {
     width: 90%;
 }
+
+@media screen and (max-width:850px) and (min-width: 768px) {
+    .profile__inner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .product-item {
+        width: 45%;
+        margin: 10px;
+    }
+
+    .product-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .user-name,
+    .edit-profile {
+        text-align: center;
+    }
+}

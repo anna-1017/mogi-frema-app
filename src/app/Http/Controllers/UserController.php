@@ -25,4 +25,6 @@ class UserController extends Controller
     public function showLogin(Request $request){
         return view('login');
     }
+
+    
 }

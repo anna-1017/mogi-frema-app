@@ -17,7 +17,7 @@
             <div class="profile-img-wrapper">
                 <div class="profile-img">
                   <div class="image">
-                    <img src="" alt="">
+                    <img src="{{ $profile && $profile->img_url ? $profile->img_url : 'https://placekitten.com/200/200' }}" alt="プロフィール画像">
                   </div>
                 </div>
                 <span class="select-img">画像を選択する</span>
@@ -26,7 +26,7 @@
             <form action="/mypage/profile" class="profile-form" method="POST">
             @csrf
                 <label class="label">ユーザー名</label>
-                <input class="form-input" type="text" name="name" value="{{ old('name') }}" />
+                <input class="form-input" type="text" name="name" value="{{ old('name', $user->name) }}" />
                 @error('name')
                 <span class="input_error">
                 <p class="input_error_message">{{ $message }}</p>
@@ -34,7 +34,7 @@
                 @enderror
 
                 <label class="label">郵便番号</label>
-                <input class="form-input" type="text" name="postcode" value="{{ old('postcode') }}" />
+                <input class="form-input" type="text" name="postcode" value="{{ old('postcode', $profile->postcode ?? '') }}" />
                 @error('postcode')
                 <span class="input_error">
                     <p class="input_error_message">{{ $message }}</p>

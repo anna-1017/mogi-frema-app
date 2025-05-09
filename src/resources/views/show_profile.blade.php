@@ -4,23 +4,21 @@
 プロフィール画面
 @endsection
 
-    @section('css')
-    <link rel="stylesheet" href="{{ asset('css/show_profile.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/header-nav.css') }}">
-    @endsection
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/show_profile.css') }}">
+<link rel="stylesheet" href="{{ asset('css/header-nav.css') }}">
+@endsection
 
-    @section('content')
-
-
+@section('content')
 <div class="profile">
             <div class="profile__inner">
                 <div class="profile-img-wrapper">
                     <div class="profile-img">
                         <div class="image">
-                            <img src="" alt="user-icon">
+                            <img src="{{ $profile ? $profile->img_url : 'https://placekitten.com/200/200' }}" alt="user-icon">
                         </div>
                     </div>
-                    <p class="user-name">ユーザー名</p>
+                    <p class="user-name">{{ $user->name }}</p>
 
                     <a href="/mypage/profile" class="edit-profile">プロフィールを編集</a>
                 </div>
@@ -39,7 +37,7 @@
                 @foreach ($products as $product)
                 <div class="product-item">
                     <div class="product-img">
-                        <img class="product-image" src="{{ $product->image_url }}" alt="produc{{ $product->name }}">
+                        <img class="product-image" src="{{ $product->img_url }}" alt="{{ $product->name }}">
                     </div>
                     <div class="product-name">{{ $product->name }}</div>
                 </div>
@@ -47,17 +45,6 @@
               </div>
 
 
-              
-
-            </div>
-            
-        </div>
-          
-            
-            
-            
-        </div>
-    </main>
-    
-</body>
-</html>
+            </div>          
+</div>
+@endsection
