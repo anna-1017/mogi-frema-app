@@ -1,7 +1,7 @@
 @extends('layouts.header-nav')
 
 @section('title')
-商品一覧画面（トップ）
+ <title>商品一覧画面（トップ）</title>
 @endsection
 
     @section('css')

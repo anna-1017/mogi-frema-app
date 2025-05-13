@@ -10,17 +10,17 @@
 @endsection
 
 @section('content')
-<form action="/purchase/confirm" method="POST">
+<form action="{{ route('purchase.confirm', ['item_id => $item->id] }}" method="POST">
     @csrf
     <div class="purchase">
         <div class="purchase-left-section">
             <div class="item-group">
                 <div class="item-img">
-                    <img src="" alt="商品画像" class="image">
+                    <img src="{{ $item->img_url }}" alt="商品画像" class="image">
                 </div>
                 <div class="item-name-price">
-                    <p class="item-name">商品名</p>
-                    <p class="item-price">￥</p>
+                    <p class="item-name">{{ $item->name }}</p>
+                    <p class="item-price">￥{{ number_format($item->price) }}</p>
                 </div>
             </div>
             <hr>
@@ -57,12 +57,20 @@
         <div class="purchase-right-section">
             <div class="price-group">
                 <p class="price-label">商品代金</p>
-                <p class="price">{{ $price->price }}</p>
+                <p class="price">￥{{ number_format($item->price) }}</p>
             </div>
 
             <div class="payment-confirmation-group">
                 <p class="payment-confirmation-label">支払方法</p>
-                <p class="payment-confirmation">{{ （コンビニ払いなど）}}</p>
+                <p class="payment-confirmation">
+                    @if(old('payment_method') == 1)
+                     コンビニ支払い
+                    @elseif(old('payment_method') == 2)
+                     カード支払い
+                    @else
+                     -
+                    @endif
+                </p>
                 </div>
 
             <button class="purchase-button" type="submit">購入する</button>

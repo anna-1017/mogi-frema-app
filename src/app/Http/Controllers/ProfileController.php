@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Profile;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -20,34 +21,37 @@ class ProfileController extends Controller
 
     public function editProfile()
     {
-        $user = auth()->user();
-        $profile = $user->profile;
+        $user = auth()->user();  
+        $profile = $user->profile;  
 
-        return view('edit_profile', compact('user', 'profile'));
+        return view('edit_profile', compact('user', 'profile')); 
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(ProfileRequest $request)
     {
-        $user = auth()->user();
-        $profile = $user->profile;
+        $validated = $request->validated();  //バリデーション済みのデータを取得
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'img_url' => 'nullable|url',
-        ]);
+        $user = auth()->user();  // 現在ログインしているユーザーを取得
 
-        $user->name = $request->input('name');
-        $user->save();
+        $user->name = $validated['name'];
+        $user->save();  // ユーザー名は User モデルに保存
 
-        if ($profile){
-            $profile->img_url = $request->input('img_url');
-            $profile->save();
-        }else {
-            Profile::create([
-                'user_id' => $user->id,
-                'img_url' => $request->input('img_url')
-            ]);
+        //プロフィール情報を更新（なければ新規作成）
+        $profile = $user->profile ?? new Profile();
+        $profile->user_id = $user->id;
+        $profile->postcode = $validated['postcode'];
+        $profile->address = $validated['address'];
+        $profile->building = $validated['building'] ?? null;
+
+        //画像がアップロードされていれば保存
+        if($request->hasFile('img_url')){
+            $image = $request->file('img_url');
+            $imagePath = $image->store('profile_images', 'public');  // 'profile_images'というディレクトリに保存
+
+            $profile->img_url = $imagePath;  //画像パスをDBに保存
         }
+
+        $profile->save();  //プロフィール情報を保存
 
         return redirect()->route('profile.edit')->with('success', 'プロフィールを更新しました');
     }

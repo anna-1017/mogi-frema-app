@@ -1,7 +1,7 @@
 @extends('layouts.header-nav')
 
   @section('title')
-  商品詳細画面
+  <title>商品詳細画面</title>
   @endsection
 
   @section('css')
@@ -40,7 +40,7 @@
                       </div>
                   </div>
 
-                  <form action="/purchase/{{ $item->id }}" method="POST" class="purchase">
+                  <form action="{{ route('purchase.confirm', ['item' =>id]) }}" method="POST" class="purchase">
                       @csrf
                       <button type="submit">購入手続きへ</button>
                   </form>
