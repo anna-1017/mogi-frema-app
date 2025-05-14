@@ -40,7 +40,7 @@
                       </div>
                   </div>
 
-                  <form action="{{ route('purchase.confirm', ['item' =>id]) }}" method="POST" class="purchase">
+                  <form action="{{ route('purchase.confirm', ['item_id' => $item->id]) }}" method="POST" class="purchase">
                       @csrf
                       <button type="submit">購入手続きへ</button>
                   </form>
@@ -62,11 +62,11 @@
                       <div class="condition-group">
                         <p class="condition-text">商品の状態</p> 
                         <p class="condition">
-                          @if($item->condition === 'good')
+                          @if($item->condition == 'good')
                             良好
-                          @elseif($item->condition === 'no_visible_damage')
+                          @elseif($item->condition == 'no_visible_damage')
                             目立った傷や汚れなし
-                          @elseif($item->condition === 'some_damage')
+                          @elseif($item->condition == 'some_damage')
                             やや傷や汚れあり
                           @else
                             状態が悪い

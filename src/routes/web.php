@@ -45,7 +45,9 @@ Route::middleware('auth')->group(function(){
     //Route::post('/purchase/{item_id}', [PurchaseController::class, 'showConfirm'])->name('purchase.showConfirm');
 
     //確認画面から「購入する」ボタンで実際に購入
-    Route::post('/purchase/confirm/{item_id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
+    Route::post('/purchase/confirm', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
+
+    Route::post('/address/change', [AddressController::class, 'change'])->name('address.change');
     
 
     

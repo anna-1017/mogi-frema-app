@@ -1,16 +1,16 @@
 @extends('layouts.header-nav')
 
 @section('title')
-商品購入画面
+<title>商品購入画面</title>
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/show_profile.css') }}">
+<link rel="stylesheet" href="{{ asset('css/purchase.css') }}">
 <link rel="stylesheet" href="{{ asset('css/header-nav.css') }}">
 @endsection
 
 @section('content')
-<form action="{{ route('purchase.confirm', ['item_id => $item->id] }}" method="POST">
+<form action="{{ route('purchase.confirm') }}" method="POST">
     @csrf
     <div class="purchase">
         <div class="purchase-left-section">
@@ -30,8 +30,8 @@
                 </p>
                 <select name="payment_method" id="payment_method">
                     <option value="">選択してください</option>
-                    <option value="1" {{ old('payment_method')==1 ? 'selected' : ' '}}>コンビニ支払い</option>
-                    <option value="2" {{( old('payment_method')==2 ? 'selected' : '')}}>カード支払い</option>
+                    <option value="1" {{ (session('payment_method') ==1) ? 'selected' : '' }}>コンビニ支払い</option>
+                    <option value="2" {{ (session('payment_method') ==2) ? 'selected' : '' }}>カード支払い</option>
 
                 </select>
                 <hr>
@@ -41,13 +41,15 @@
             <div class="address-group">
                 <div class="address-header">
                     <p class="address-label">配送先</p>
-                    <a class="edit-address" href="">変更する</a>
+                    
+                    <button type="submit" name="action" value="change_address" class="edit-address">変更する</button>
+
                 </div>
                     
                 <div class="address-details">
-                    <div class="postcode">{{ $postcode->postcode }}</div>
-                    <div class="address">{{ $address->address }}</div>
-                    <div class="building">{{ $building->building }}</div>
+                    <div class="postcode">{{ $postcode }}</div>
+                    <div class="address">{{ $address }}</div>
+                    <div class="building">{{ $building }}</div>
                 </div>
                 <hr>
             </div>
@@ -71,10 +73,10 @@
                      -
                     @endif
                 </p>
-                </div>
+            </div>
 
             <button class="purchase-button" type="submit">購入する</button>
-
+        
         </div>
 
     </div>
