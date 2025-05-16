@@ -59,14 +59,14 @@
     font-size: 12px;
 }
 
-.icon-form{
+.icon-form {
     display: inline-block;
     margin: 0;
     padding: 0;
-    
+
 }
 
-.icon-button{
+.icon-button {
     background: none;
     border: none;
     padding: 0;
@@ -79,7 +79,7 @@
     margin-top: -0.5px;
 }
 
-.icon-button span{
+.icon-button span {
     margin-top: 2px;
     line-height: 1;
     color: #333;
@@ -99,7 +99,26 @@
 }
 
 
+.btn {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    background: #FF5555;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
 
+
+/*
 .purchase button {
     width: 95%;
     height: 30px;
@@ -112,7 +131,7 @@
     cursor: pointer;
     margin-bottom: 10%;
 }
-
+ */
 
 
 .description-title {
@@ -221,6 +240,7 @@ textarea {
     border-radius: 3px;
 }
 
+
 button {
     width: 95%;
     height: 30px;
@@ -234,6 +254,7 @@ button {
     margin-top: 30px;
     margin-bottom: 50px;
 }
+
 
 @media (max-width: 768px) {
     .product-img {

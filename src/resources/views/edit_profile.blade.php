@@ -1,4 +1,3 @@
-
 @extends('layouts.header-nav')
 
   @section('title')

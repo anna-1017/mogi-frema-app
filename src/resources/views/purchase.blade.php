@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-<form action="{{ route('purchase.confirm') }}" method="POST">
+<form action="{{ route('purchase.confirm', ['item_id' => $item->id]) }}" method="POST">
     @csrf
     <div class="purchase">
         <div class="purchase-left-section">
@@ -42,14 +42,18 @@
                 <div class="address-header">
                     <p class="address-label">配送先</p>
                     
+                    <!--
                     <button type="submit" name="action" value="change_address" class="edit-address">変更する</button>
+                    -->
+
+                    <a href="{{ route('address.change', ['item_id' => $item->id]) }}" class="edit-address">変更する</a>
 
                 </div>
                     
                 <div class="address-details">
-                    <div class="postcode">{{ $postcode }}</div>
-                    <div class="address">{{ $address }}</div>
-                    <div class="building">{{ $building }}</div>
+                    <div class="postcode">〒{{ $address->postcode }}</div>
+                    <div class="address">{{ $address->address }}</div>
+                    <div class="building">{{ $address->building }}</div>
                 </div>
                 <hr>
             </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
+use Illuminate\Support\Facades\Auth;
 
 
 class AddressController extends Controller
@@ -19,4 +21,14 @@ class AddressController extends Controller
 
         return redirect()->back();
     }
+
+    public function showChangeForm($item_id)
+    {
+        $item = Item::findOrFail($item_id);
+        $user = auth()->user();
+        $address = $user->profile;
+
+        return view('update_address', compact('item', 'address'));
+    }
+
 }

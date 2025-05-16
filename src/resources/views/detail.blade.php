@@ -39,11 +39,15 @@
                           <span>{{ $item->comments_count ?? 0 }}</span>
                       </div>
                   </div>
-
-                  <form action="{{ route('purchase.confirm', ['item_id' => $item->id]) }}" method="POST" class="purchase">
+ <!--
+                  <form action="{{ route('purchase.showConfirm', ['item_id' => $item->id]) }}" method="POST" class="purchase">
                       @csrf
+                      <input type="hidden" name="action" value="purchase">
                       <button type="submit">購入手続きへ</button>
                   </form>
+-->
+
+                  <a href="{{ route('purchase.showConfirm', ['item_id' => $item->id]) }}" class="btn">購入手続きへ</a>
 
                   <div class="description">
                       <p class="description-title">商品説明</p>

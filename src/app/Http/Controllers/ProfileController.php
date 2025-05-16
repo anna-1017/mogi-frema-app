@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Item;
 use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
@@ -54,5 +55,25 @@ class ProfileController extends Controller
         $profile->save();  //プロフィール情報を保存
 
         return redirect()->route('profile.edit')->with('success', 'プロフィールを更新しました');
+    }
+
+    public function updateAddress(Request $request, Item $item)
+    {
+        $request->validate([
+            'postcode' => 'required|string|max:8',
+            'address' => 'required|string|max:255',
+            'building' => 'nullable|string|max:255',
+        ]);
+
+        $user = auth()->user();
+
+        $user->profile->update([
+            'postcode' => $request->postcode,
+            'address' => $request->address,
+            'building' => $request->building,
+        ]);
+
+        return redirect()->route('purchase.showConfirm', ['item_id' => $item->id]);
+
     }
 }

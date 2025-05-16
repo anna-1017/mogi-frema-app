@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\AddressController;
 use Laravel\Fortify\Fortify;
 
 
@@ -42,13 +43,20 @@ Route::middleware('auth')->group(function(){
     Route::post('/mypage/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
     //詳細画面から確認画面へ（購入ボタン）
-    //Route::post('/purchase/{item_id}', [PurchaseController::class, 'showConfirm'])->name('purchase.showConfirm');
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'showConfirm'])->name('purchase.showConfirm');
 
     //確認画面から「購入する」ボタンで実際に購入
-    Route::post('/purchase/confirm', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
+    Route::post('/purchase/confirm/{item_id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
 
-    Route::post('/address/change', [AddressController::class, 'change'])->name('address.change');
+    //address変更画面を表示するルート
+    Route::get('/address/change/{item_id}', [AddressController::class, 'showChangeForm'])->name('address.change');
+
+    //変更したaddress保存処理用のルート
+    //Route::post('/address/update', [AddressController::class, 'update'])->name('address.update');
+
+    Route::post('/purchase/address/{item}', [ProfileController::class, 'updateAddress'])->name('address.update');
     
+    Route::get('purchase/complete', [PurchaseController::class, 'complete'])->name('purchase.complete');
 
     
 });
