@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Like;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
@@ -54,6 +55,34 @@ class ItemController extends Controller
 
         return back();//もとのページに戻る
 
+    }
+
+    public function create()
+    {
+        //出品画面の表示
+        $categories =['アクセサリー', '時計', '靴', '家電', 'スポーツ', '食料品', 'キッチン用品', 'バッグ', '化粧品'];
+
+        return view('sell', compact('categories'));
+    }
+
+    //出品処理
+    public function store(ExhibitionRequest $request)
+    {
+        //画像アップロード処理
+        $path = $request->file('img_url')->store('images', 'public');
+
+        //データベースに登録
+        Item::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'brand_name' => $request->input('brand_name'),
+            'category' => $request->input('category'),
+            'condition' => $request->input('condition'),
+            'price' => $request->input('price'),
+            'image_url' => $path,
+        ]);
+
+        return redirect()->route('items.create')->with('success', '出品が完了しました');
     }
 }
 

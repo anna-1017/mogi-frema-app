@@ -58,5 +58,13 @@ Route::middleware('auth')->group(function(){
     
     Route::get('purchase/complete', [PurchaseController::class, 'complete'])->name('purchase.complete');
 
+    //出品画面の表示
+    Route::get('/sell', [ItemController::class, 'create'])->name('items.create');
+
+    //出品データの登録
+    Route::post('/sell', [ItemController::class, 'store'])->name('items.store');
+
+    //商品を新規出品（登録）する処理？？上のと違うのか？？
+    Route::post('/items', [ItemController::class, 'store'])->name('items.store');
     
 });

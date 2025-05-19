@@ -1,0 +1,269 @@
+.sell {
+    height: auto;
+}
+
+.sell__inner {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+h2 {}
+
+.sell-form {
+    width: 70%;
+}
+
+.img-group {
+    margin-top: 30px;
+}
+
+.sell-img-label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.img-upload-box {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 7px 20px;
+    color: #FF5655;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #FF5655;
+    border-radius: 5px;
+}
+
+.upload-input {
+    display: none;
+
+}
+
+.detail-group {
+    margin-top: 30px;
+}
+
+.detail-group-title {
+    font-size: 20px;
+    color: #5F5F5F;
+    font-weight: bold;
+}
+
+.detail-category {
+    margin-top: 20px;
+
+}
+
+.category-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category-select-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.category-select-group input[type="radio"] {
+    display: none;
+}
+
+.category-select-group label {
+    padding: 2px 10px;
+    border: 1px solid #FF5655;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #FF5655;
+    cursor: pointer;
+}
+
+.category-select-group input[type="radio"]:checked+label {
+    background-color: #FF5655;
+    color: white;
+}
+
+.detail-condition {
+    margin-top: 20px;
+
+}
+
+.condition-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.condition {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.description-group {
+    margin-top: 30px;
+}
+
+.description-group-title {
+    font-size: 20px;
+    color: #5F5F5F;
+    font-weight: bold;
+}
+
+.description-name {
+    margin-top: 20px;
+}
+
+.name-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.description-brand {
+    margin-top: 20px;
+}
+
+.brand-title {
+    font-size: 18px;
+    font-weight: bold
+}
+
+.description-text {
+    margin-top: 20px;
+}
+
+.text-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    height: 70px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.description-price {
+    margin-top: 20px;
+}
+
+.price-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.price-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.price-input-wrapper .yen {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.price-input-wrapper input {
+    padding-left: 25px;
+
+}
+
+button {
+    margin-top: 70px;
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    background: #FF5555;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+@media screen and (min-width:768px) and (max-width:850px) {
+    .sell__inner {
+        width: 95%;
+    }
+
+    .sell-form {
+        width: 100%;
+    }
+
+    .img-upload-box {
+        height: 120px;
+    }
+
+    .category-select-group {
+        gap: 6px;
+    }
+
+    .category-select-group label {
+        font-size: 13px;
+        padding: 4px 8px;
+    }
+
+    .condition {
+        height: 35px;
+    }
+
+    input,
+    textarea {
+        height: auto;
+        font-size: 16px;
+        padding: 6px;
+    }
+
+    .price-input-wrapper .yen {
+        left: 8px;
+        font-size: 14px;
+    }
+
+    .price-input-wrapper input {
+        padding-left: 20px;
+    }
+
+    button {
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .sell-img-label,
+    .detail-group-title,
+    .description-group-title,
+    .category-title,
+    .condition-title,
+    .name-title,
+    .brand-title,
+    .text-title,
+    .price-title {
+        font-size: 16px;
+    }
+}
