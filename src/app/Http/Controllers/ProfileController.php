@@ -13,12 +13,15 @@ class ProfileController extends Controller
 {
     public function show()
     {
-        $user = auth()->user();// ログイン中のユーザー情報を取得！
+        $user = auth()->user()->load(['profile', 'items', 'purchases']);// ログイン中のユーザー情報を取得！
         $profile = $user->profile;
-        $products = $user->items;
+        $products = request('tab') === 'buy' ? $user->purchases : $user->items;
 
         return view('show_profile', compact('user', 'profile' , 'products'));
+
     }
+
+
 
     public function editProfile()
     {

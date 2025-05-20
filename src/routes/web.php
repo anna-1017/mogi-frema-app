@@ -64,7 +64,6 @@ Route::middleware('auth')->group(function(){
     //出品データの登録
     Route::post('/sell', [ItemController::class, 'store'])->name('items.store');
 
-    //商品を新規出品（登録）する処理？？上のと違うのか？？
-    Route::post('/items', [ItemController::class, 'store'])->name('items.store');
+    Route::get('/items', [ItemController::class, 'index'])->name('items.index');
     
 });

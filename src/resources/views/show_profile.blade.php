@@ -1,7 +1,7 @@
 @extends('layouts.header-nav')
 
 @section('title')
-プロフィール画面
+<title>プロフィール画面</title>
 @endsection
 
 @section('css')
@@ -15,7 +15,7 @@
                 <div class="profile-img-wrapper">
                     <div class="profile-img">
                         <div class="image">
-                            <img src="{{ $profile ? $profile->img_url : 'https://placekitten.com/200/200' }}" alt="user-icon">
+                            <img src="{{ $profile ? asset('storage/' . $profile->img_url) : 'https://placekitten.com/200/200' }}" alt="user-icon">
                         </div>
                     </div>
                     <p class="user-name">{{ $user->name }}</p>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Like;
+use App\Models\Category;
 use App\Http\Requests\ExhibitionRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -71,18 +73,33 @@ class ItemController extends Controller
         //画像アップロード処理
         $path = $request->file('img_url')->store('images', 'public');
 
-        //データベースに登録
-        Item::create([
+
+        //Itemを作成
+        $item = Item::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'brand_name' => $request->input('brand_name'),
-            'category' => $request->input('category'),
             'condition' => $request->input('condition'),
             'price' => $request->input('price'),
-            'image_url' => $path,
+            'img_url' => $path,
+            'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('items.create')->with('success', '出品が完了しました');
+
+
+        //カテゴリー関連付け
+        $categoryName = $request->input('category');
+        $category = Category::where('category', $categoryName)->first();
+
+       if($category){
+        $item->categories()->attach($category->id);
+
+       }
+
+
+
+        
+        return redirect()->route('items.index')->with('success', '出品が完了しました');
     }
 }
 

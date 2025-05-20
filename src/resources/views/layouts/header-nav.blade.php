@@ -29,7 +29,7 @@
                             @csrf
                             <button type="submit">ログアウト</button>
                           </form>
-                        <a href="/mypage/profile" class="mypage">マイページ</a>
+                        <a href="{{ route('profile.show') }}" class="mypage">マイページ</a>
                         <a href="/sell" class="sell">出品</a>
                         @endauth
 
@@ -38,7 +38,7 @@
                             @csrf
                             <a href="{{ route('login') }}" class="login">ログイン</a>
                           </form>
-                        <a href="/mypage/profile">マイページ</a>
+                        <a href="{{ route('profile.show') }}">マイページ</a>
                         <a href="/sell" class="sell">出品</a>
                         @endguest
                     </nav>

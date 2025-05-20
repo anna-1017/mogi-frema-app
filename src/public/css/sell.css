@@ -208,6 +208,10 @@ button {
     margin-bottom: 50px;
 }
 
+.alert {
+    color: red;
+}
+
 @media screen and (min-width:768px) and (max-width:850px) {
     .sell__inner {
         width: 95%;

@@ -16,13 +16,24 @@
 
                 <form action="{{ route('items.store') }}" class="sell-form" method="POST" enctype="multipart/form-data">
                 @csrf 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     <div class="img-group">
                         <div class="sell-img-label">商品画像</div>
                         <div class="img-upload-box">
                             <label for="product-image" class="upload-label">画像を選択する
                               <input type="file" id="product-image" class="upload-input" name="img_url">
                             </label>
-                            <img src="{{ storage::url($item->image_url) }}" alt="商品画像">
+                          @if (!empty($item->img_url))  
+                            <img src="{{ asset('storage/' . $item->img_url) }}" alt="">
+                          @endif
                         </div>
                         
                     </div>   
@@ -126,6 +137,8 @@
 
                     <button type="submit">出品する</button>
                 </form>
+                
+
             </div>
 
 
