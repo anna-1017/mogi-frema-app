@@ -20,30 +20,35 @@ class PurchaseController extends Controller
 
     public function confirm(Request $request, $item_id)
     {
-        if ($request->input('action') === 'change_address') {
-            return redirect()->route('address.change'); // ←住所変更画面に遷移
-        }
+        //if ($request->input('action') === 'change_address') {
+            //return redirect()->route('address.change'); // ←住所変更画面に遷移
+        //}
 
         $action = $request->input('action');
 
+
         if ($action === 'change_address'){
-            //入力された配送先をセッションの保存
+            //入力された配送先をセッションに保存
             session([
                 'postcode' => $request->input('postcode'),
                 'address' => $request->input('address'),
                 'building' => $request->input('building'),
             ]);
 
-            return redirect()->back();
+            return redirect()->route('address.change', ['item_id' => $item_id]);
         }
         
         if ($action === 'purchase'){
-            
-            //成功したら購入完了画面へ
+            //セッションに支払方法を保存
+            session(['payment_method' => $request->input('payment_method')]);
+            //購入完了画面へ
             return redirect()->route('purchase.complete');
         }
 
+        return redirect()->back()->with('error', '不正な操作です');
+
     }
+
 
     public function showPurchasePage()
     { 

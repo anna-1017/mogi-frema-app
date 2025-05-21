@@ -1,4 +1,4 @@
-@extends('layouts.header-nav')
+@extends('layouts.header-nav')<!--これいらないかも？？ -->
 
     @section('title')
     <title>プロフィール設定画面_初回ログイン時</title>

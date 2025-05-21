@@ -15,9 +15,9 @@
         <div class="toppage__inner">
             <header class="toppage__header">
                 <div class="header__inner">
-                    <div class="header-logo">
+                    <a href="{{ url('/') }}" class="header-logo">
                         <img src="{{ asset('images/logo.svg') }}" alt="logo" class="logo">
-                    </div>
+                    </a>
 
                     <form action="/" method ="GET" class="product-search-form">
                       <input class="product-search" type="text" name="query" value="{{ request('query') }}" placeholder="　　なにをお探しですか？">
@@ -34,12 +34,9 @@
                         @endauth
 
                         @guest
-                          <form action="{{ route('login') }}" method="GET">
-                            @csrf
                             <a href="{{ route('login') }}" class="login">ログイン</a>
                           </form>
-                        <a href="{{ route('profile.show') }}">マイページ</a>
-                        <a href="/sell" class="sell">出品</a>
+                        
                         @endguest
                     </nav>
                 </div>

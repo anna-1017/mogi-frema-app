@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function(){
 
     Route::post('/purchase/address/{item}', [ProfileController::class, 'updateAddress'])->name('address.update');
     
-    Route::get('purchase/complete', [PurchaseController::class, 'complete'])->name('purchase.complete');
+    Route::get('/purchase/complete', [PurchaseController::class, 'complete'])->name('purchase.complete');
 
     //出品画面の表示
     Route::get('/sell', [ItemController::class, 'create'])->name('items.create');
@@ -65,5 +65,6 @@ Route::middleware('auth')->group(function(){
     Route::post('/sell', [ItemController::class, 'store'])->name('items.store');
 
     Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+
     
 });

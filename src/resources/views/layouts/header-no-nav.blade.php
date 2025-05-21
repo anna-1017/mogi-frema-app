@@ -15,9 +15,9 @@
         <div class="toppage__inner">
             <header class="toppage__header">
                 <div class="header__inner">
-                    <div class="header-logo">
+                    <a href="{{ url('/') }}" class="header-logo">
                         <img src="{{ asset('images/logo.svg') }}" alt="logo" class="logo">
-                    </div>
+                    </a>
                     
                 </div>
             </header>
