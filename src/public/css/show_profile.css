@@ -151,7 +151,41 @@ hr {
 }
 
 .product-list {
-    width: 90%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+}
+
+.product-item {
+    width: 300px;
+    margin-top: 60px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    background: #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.product-img {
+    margin-bottom: 10px;
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+
+.product-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
 }
 
 @media screen and (max-width:850px) and (min-width: 768px) {

@@ -14,7 +14,7 @@
         <div class="detail__inner">
 
             <div class="product-img">
-                <img class="product-image" src="{{ $item->img_url }}" alt="produc{{ $item->name }}">
+                <img class="product-image" src="{{ filter_var($item->img_url, FILTER_VALIDATE_URL) ? $item->img_url : asset('storage/' . $item->img_url) }}" alt="produc{{ $item->name }}">
             </div>
 
             <div class="detail-item">
@@ -28,7 +28,7 @@
                 <form action="{{ route('item.toggle_like', ['item_id' => $item->id]) }}" method="POST" class="icon-form">
                 @csrf
                   <button type="submit" class="icon-button">
-                    <img src="/images/star_icon.png" class="star-icon" alt="いいね">
+                    <img src="/images/star_icon.png" class="star-icon {{ $liked ? 'liked' : '' }}" alt="いいね">
                     <span>{{ $item->likes_count ?? 0 }}</span>
                   </button>
                 </form>
@@ -78,12 +78,13 @@
               @foreach ($item->comments as $comment)
                   <div class="comment">
                     <div class="comment-user">
-                      <img src="{{ $comment->user->profile_image }}" alt="アイコン" class="user-icon">
+                    <img src="{{ $comment->user->profile ? asset('storage/' . $comment->user->profile->img_url) : 'https://placekitten.com/200/200' }}" alt="アイコン" class="user-icon">
+                    <p>{{ $comment->user->profile_image }}</p>
                       <span class="user-name">{{ $comment->user->name }}</span>
                     </div>
                           
                       <p class="comment-text">{{ $comment->comment }}</p>
-                    </div>
+                  </div>
               @endforeach
             </div>
 

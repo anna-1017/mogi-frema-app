@@ -13,7 +13,7 @@
   <div class="register">
     <div class="register__inner">
       <h2 class="register-header">会員登録</h2>
-      <form action="/register" class="register-form" method="POST">
+      <form action="/register" class="register-form" method="POST" novalidate>
       @csrf
         <label class="label">ユーザー名</label>
         <input class="form-input" type="text" name="name" value="{{ old('name') }}" />

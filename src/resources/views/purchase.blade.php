@@ -16,7 +16,7 @@
     <div class="purchase-left-section">
       <div class="item-group">
         <div class="item-img">
-          <img src="{{ $item->img_url }}" alt="商品画像" class="image">
+          <img class="image" src="{{ filter_var($item->img_url, FILTER_VALIDATE_URL) ? $item->img_url : asset('storage/' . $item->img_url) }}" alt="produc{{ $item->name }}">
         </div>
         <div class="item-name-price">
           <p class="item-name">{{ $item->name }}</p>

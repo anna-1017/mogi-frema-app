@@ -92,6 +92,10 @@
     margin-bottom: 2px;
 }
 
+/* いいね済み：黄色に */
+.star-icon.liked {
+    filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(2455%) hue-rotate(343deg) brightness(96%) contrast(101%); 
+}
 
 .bubble-icon {
     width: 20px;
@@ -117,21 +121,6 @@
     margin-bottom: 10px;
 }
 
-
-/*
-.purchase button {
-    width: 95%;
-    height: 30px;
-    background: #FF5555;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 10%;
-}
- */
 
 
 .description-title {

@@ -28,16 +28,33 @@ class ItemController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $item = Item::withCount('likes')->findOrFail($id);
+        $liked = false;
+
+        if (Auth::check()){
+            $liked = $item->likes()->where('user_id', Auth::id())->exists();
+        }
+
+        return view('detail', compact('item', 'liked'));
+    }
+
 
 
     public function getDetail(Item $item)
     {
         $item->loadCount('comments');//コメント数カウント反映のため
         $item->load('categories'); //この $item に関連付けられた categories を あらかじめ取得しておくよ！という命令
-
         $item->loadCount('likes'); 
 
-        return view('detail', compact('item'));
+        $liked = false;
+        if (Auth::check()){
+            $liked = $item->likes()->where('user_id', Auth::id())->exists();
+        }
+
+
+        return view('detail', compact('item', 'liked'));
     }
 
     public function toggleLike($item_id)

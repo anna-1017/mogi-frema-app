@@ -35,7 +35,7 @@
     @foreach ($products as $product)
       <div class="product-item">
         <div class="product-img">
-          <img class="product-image" src="{{ $product->img_url }}" alt="{{ $product->name }}">
+        <img class="product-image" src="{{ filter_var($product->img_url, FILTER_VALIDATE_URL) ? $product->img_url : asset('storage/' . $product->img_url) }}" alt="product{{ $product->name }}">
         </div>
         <div class="product-name">{{ $product->name }}</div>
       </div>

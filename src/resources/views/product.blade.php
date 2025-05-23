@@ -21,7 +21,11 @@
     <a href="/item/{{ $item->id }}" class="product-card">
       <div class="product-item">
         <div class="product-img">
-          <img class="product-image" src="{{ $item->img_url }}" alt="produc{{ $item->name }}">
+          @if (Str::startsWith($item->img_url, 'http'))
+            <img class="product-image" src="{{ $item->img_url }}" alt="product{{ $item->name }}" >
+          @else
+            <img class="product-image" src="{{ asset('storage/' . $item->img_url) }}" alt="produc{{ $item->name }}">
+          @endif
         </div>
         <div class="product-name">{{ $item->name }}</div>
       </div>
