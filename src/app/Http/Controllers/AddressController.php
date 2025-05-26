@@ -11,7 +11,6 @@ class AddressController extends Controller
 {
     public function change(Request $request)
     {
-        //バリデーションや保存処理など
         session([
             'postcode' => $request->input('postcode'),
             'address' => $request->input('address'),

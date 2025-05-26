@@ -87,7 +87,6 @@ body {
 }
 
 .profile-img {
-    /*単なる丸い背景エリア（アイコンが読み込まれないときのスペース＆背景色） */
     width: 80px;
     height: 80px;
     border-radius: 100%;
@@ -95,7 +94,6 @@ body {
 }
 
 .image {
-    /*画像を丸くトリミングするためのマスク（覆い）。overflow: hidden で画像のハミ出しを防いでる。 */
     width: 80px;
     height: 80px;
     border-radius: 100%;
@@ -103,11 +101,9 @@ body {
 }
 
 .image img {
-    /*画像自体に**「枠内にうまく収まってね！」っていう指示**。 */
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /*枠に合わせて画像を**中央を基準にズームして切り取る（トリミング）**という指定 */
     display: block;
 }
 

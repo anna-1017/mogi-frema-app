@@ -15,10 +15,10 @@ class ItemController extends Controller
     {
         $tab = $request->input('tab', 'products');
 
-        if($tab === 'mylist'){// ログイン中のユーザーが「いいね」した商品を取得
+        if($tab === 'mylist'){
             $items = auth()->user()->likes()->with('item')->get()->pluck('item');
         }else{
-            $items = Item::all();// おすすめ商品の一覧を取得
+            $items = Item::all();
         }
 
         return view('product', [
@@ -44,8 +44,8 @@ class ItemController extends Controller
 
     public function getDetail(Item $item)
     {
-        $item->loadCount('comments');//コメント数カウント反映のため
-        $item->load('categories'); //この $item に関連付けられた categories を あらかじめ取得しておくよ！という命令
+        $item->loadCount('comments');
+        $item->load('categories'); 
         $item->loadCount('likes'); 
 
         $liked = false;
@@ -63,7 +63,6 @@ class ItemController extends Controller
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
 
-        //すでに「いいね」してたら削除、なければ追加
         if($item->likes()->where('user_id', $user->id)->exists()){
             $item->likes()->where('user_id', $user->id)->delete();
         } else{
@@ -72,26 +71,22 @@ class ItemController extends Controller
 
         
 
-        return back();//もとのページに戻る
+        return back();
 
     }
 
     public function create()
     {
-        //出品画面の表示
         $categories =['アクセサリー', '時計', '靴', '家電', 'スポーツ', '食料品', 'キッチン用品', 'バッグ', '化粧品'];
 
         return view('sell', compact('categories'));
     }
 
-    //出品処理
     public function store(ExhibitionRequest $request)
     {
-        //画像アップロード処理
         $path = $request->file('img_url')->store('images', 'public');
 
 
-        //Itemを作成
         $item = Item::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
@@ -103,8 +98,6 @@ class ItemController extends Controller
         ]);
 
 
-
-        //カテゴリー関連付け
         $categoryName = $request->input('category');
         $category = Category::where('category', $categoryName)->first();
 
@@ -112,8 +105,6 @@ class ItemController extends Controller
         $item->categories()->attach($category->id);
 
        }
-
-
 
         
         return redirect()->route('items.index')->with('success', '出品が完了しました');

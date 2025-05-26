@@ -19,7 +19,7 @@ class UserController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect('/mypage/profile');//会員登録直後、プロフィール設定画面に遷移する
+        return redirect('/mypage/profile');
     }
 
     public function showLogin(Request $request){
