@@ -27,8 +27,8 @@ class CommentTest extends TestCase
             'comment' => 'テストコメントです',
         ]);
 
-        $response->assertRedirest();
-        $this->assertDatabaseHas('comments' [
+        $response->assertRedirect();
+        $this->assertDatabaseHas('comments', [
             'user_id' => $user->id,
             'product_id' => $product->id,
             'comment' => 'テストコメントです',
@@ -57,7 +57,7 @@ class CommentTest extends TestCase
         $this->actingAs($user);
 
         $response = $this->post(route('comment.store',$product->id), [
-            'comment' => ''
+            'comment' => '',
         ]);
     }
 
@@ -71,7 +71,7 @@ class CommentTest extends TestCase
         $loginCommnet =str_repeat('あ', 256);
 
         $response = $this->post(route('comment.store', $product->id), [
-            'comment' => $longComment,
+            'comment' => $loginComment,
         ]);
 
         $response->assertSessionHasErrors('comment');

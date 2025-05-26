@@ -23,7 +23,7 @@ class PaymentTest extends TestCase
             'price' => 5000,
         ]);
 
-        $conveniencestore = PaymentMethod::create('name' => 'コンビニ支払い');
+        $conveniencestore = PaymentMethod::create(['name' => 'コンビニ支払い']);
         $card = PaymentMethod::create(['name' => 'カード支払い']);
 
         $this->actingAs($user);

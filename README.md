@@ -62,3 +62,11 @@ php artisan db:seed
 ### 一般ユーザー2
 - メールアドレス：test2@example.com
 - パスワード：password2
+
+
+## テストの実行方法
+以下のコマンドでFeatureテストを実行
+```
+php artisan test
+```
+

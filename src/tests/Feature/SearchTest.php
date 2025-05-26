@@ -20,9 +20,9 @@ class SearchTest extends TestCase
      */
     public function test_商品名で部分一致検索ができる()
     {
-        $product1 = \App\Models\Product::factory()->create(['name' -> 'Apple iPhone']);
-        $product2 = \App\Models\Product::factory()->create(['name' -> 'Apple watch']);
-        $product3 = \App\Models\Product::factory()->create(['name' -> 'Samsung Galaxy']);
+        $product1 = \App\Models\Product::factory()->create(['name' => 'Apple iPhone']);
+        $product2 = \App\Models\Product::factory()->create(['name' => 'Apple watch']);
+        $product3 = \App\Models\Product::factory()->create(['name' => 'Samsung Galaxy']);
 
         $response = $this->get('/?search=Apple');
 

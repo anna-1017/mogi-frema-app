@@ -71,7 +71,7 @@ class MylistTest extends TestCase
     {
         $product = Product::factory()->create();
 
-        $response = $this->get('/?tab=mylist')
+        $response = $this->get('/?tab=mylist');
 
         $response->assertRedirect('login');
     }
