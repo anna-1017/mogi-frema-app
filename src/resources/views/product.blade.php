@@ -28,6 +28,11 @@
           @endif
         </div>
         <div class="product-name">{{ $item->name }}</div>
+
+        @if ($item->is_sold)
+          <div class="sold-label">SOLD</div>
+        @endif
+        
       </div>
     </a>
   @endforeach

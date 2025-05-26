@@ -141,3 +141,10 @@ body {
 .product-list.search-mode .product-card {
     width: 200px;
 }
+
+.sold-label {
+    font-weight: bold;
+    font-size: 14px;
+    color: red;
+    margin-top: 4px;
+}

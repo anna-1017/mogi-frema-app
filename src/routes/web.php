@@ -21,6 +21,9 @@ use Laravel\Fortify\Fortify;
 |
 */
 
+// =====================
+// 認証外ルート
+// =====================
 Route::get('/', [ItemController::class, 'index'])->name('products.index');
 Route::get('/register', function(){
     return view('register');
@@ -31,6 +34,9 @@ Route::get('/login', [UserController::class, 'showLogin'])->name('login');
 
 Route::get('/item/{item}', [ItemController::class, 'getDetail']);
 
+// =====================
+// 認証後ルート
+// =====================
 Route::middleware('auth')->group(function(){
     Route::get('/mypage', [ProfileController::class, 'show'])->name('profile.show');
     
@@ -42,29 +48,20 @@ Route::middleware('auth')->group(function(){
     Route::get('/mypage/profile', [ProfileController::class, 'editProfile'])->name('profile.edit');
     Route::post('/mypage/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
-    //詳細画面から確認画面へ（購入ボタン）
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'showConfirm'])->name('purchase.showConfirm');
 
-    //確認画面から「購入する」ボタンで実際に購入
     Route::post('/purchase/confirm/{item_id}', [PurchaseController::class, 'confirm'])->name('purchase.confirm');
 
-    //address変更画面を表示するルート
     Route::get('/address/change/{item_id}', [AddressController::class, 'showChangeForm'])->name('address.change');
-
-    //変更したaddress保存処理用のルート
-    //Route::post('/address/update', [AddressController::class, 'update'])->name('address.update');
 
     Route::post('/purchase/address/{item}', [ProfileController::class, 'updateAddress'])->name('address.update');
     
     Route::get('/purchase/complete', [PurchaseController::class, 'complete'])->name('purchase.complete');
 
-    //出品画面の表示
     Route::get('/sell', [ItemController::class, 'create'])->name('items.create');
 
-    //出品データの登録
     Route::post('/sell', [ItemController::class, 'store'])->name('items.store');
 
     Route::get('/items', [ItemController::class, 'index'])->name('items.index');
-
     
 });
