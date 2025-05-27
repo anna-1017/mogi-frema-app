@@ -29,7 +29,7 @@
         </div>
         <div class="product-name">{{ $item->name }}</div>
 
-        @if ($item->is_sold)
+        @if ($item->status === 'sold_out')
           <div class="sold-label">SOLD</div>
         @endif
         

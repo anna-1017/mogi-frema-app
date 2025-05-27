@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Purchase;
 
 class PurchaseController extends Controller
 {
@@ -36,11 +37,28 @@ class PurchaseController extends Controller
         }
         
         if ($action === 'purchase'){
+            $user = auth()->user();
+            $item = Item::findOrFail($item_id);
+
+            if ($item->status === 'sold_out'){
+                return redirect()->back()->with('error', 'この商品はすでに購入されています。');
+            }
+
+            \App\Models\Purchase::create([
+                'user_id' => $user->id,
+                'item_id' => $item->id,
+            ]);
+
+
+            $item->status = 'sold_out';
+            $item->save();
+
             session(['payment_method' => $request->input('payment_method')]);
+
             return redirect()->route('purchase.complete');
         }
 
-        return redirect()->back()->with('error', '不正な操作です');
+        
 
     }
 
